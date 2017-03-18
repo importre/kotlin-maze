@@ -1,0 +1,174 @@
+buildscript {
+
+    repositories {
+        jcenter()
+//        maven { url rootProject.ext.kotlin_eap_url }
+    }
+
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$rootProject.kotlin_version"
+        classpath "org.jetbrains.dokka:dokka-gradle-plugin:$rootProject.dokka_version"
+    }
+}
+
+plugins {
+    id "com.jfrog.bintray" version "1.7.3"
+    id "com.github.dcendents.android-maven" version "1.5"
+}
+
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'org.jetbrains.dokka'
+
+def _group = 'com.importre'
+def _artifact = 'kotlin-maze-test'
+def _version = rootProject.ext.maze_version
+def _githubUrl = rootProject.ext.github_url
+def _desc = 'Maze Test'
+
+group _group
+version _version
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName _version
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+        test.java.srcDirs += 'src/test/kotlin'
+    }
+
+    testOptions.unitTests.all {
+        testLogging {
+            events 'passed', 'skipped', 'failed', 'standardOut', 'standardError'
+        }
+    }
+
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
+}
+
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.kotlin.srcDirs
+    classifier "sources"
+}
+
+task javadocJar(type: Jar, dependsOn: 'dokka') {
+    classifier = 'javadoc'
+    from "$buildDir/javadoc"
+}
+
+dokka {
+    moduleName = 'kotlin-maze-test'
+    outputFormat = 'javadoc'
+    outputDirectory = "$buildDir/javadoc"
+    processConfigurations = ['compile']
+    sourceDirs = files('src/main/kotlin')
+    linkMapping {
+        dir = "src/main/kotlin"
+        url = "$_githubUrl/blob/$_version/kotlin-maze/src/main/kotlin"
+        suffix = "#L"
+    }
+}
+
+repositories {
+    jcenter()
+//    maven { url rootProject.ext.kotlin_eap_url }
+}
+
+dependencies {
+    compile project(':kotlin-maze')
+}
+
+artifacts {
+    archives sourcesJar
+    archives javadocJar
+}
+
+install {
+    repositories.mavenInstaller {
+        pom.project {
+            name _artifact
+            description _desc
+            url _githubUrl
+            inceptionYear '2017'
+
+            packaging 'aar'
+            groupId _group
+            artifactId _artifact
+            version _version
+
+            licenses {
+                license {
+                    name 'The Apache Software License, Version 2.0'
+                    url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    distribution 'repo'
+                }
+            }
+
+            scm {
+                connection = "${_githubUrl}.git"
+                url _githubUrl
+
+            }
+
+            developers {
+                developer {
+                    name "Jaewe Heo"
+                    id "importre"
+                    email "jaeweheo@gmail.com"
+                }
+            }
+        }
+    }
+}
+
+bintray {
+    Properties props = new Properties()
+    def f = project.rootProject.file('local.properties')
+    if (f.exists()) props.load(f.newDataInputStream())
+
+    user = props.getProperty('user', "")
+    key = props.getProperty('key', "")
+    configurations = ['archives']
+    publish = true
+    dryRun = true
+
+    pkg {
+        repo = 'maven'
+        name = _artifact
+        licenses = ['Apache-2.0']
+        vcsUrl = "${_githubUrl}.git"
+        publicDownloadNumbers = true
+
+        version {
+            name = _version
+            vcsTag = _version
+            gpg {
+                sign = true
+            }
+        }
+    }
+}

@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">maze</string>
+    <string name="hello">Hello</string>
+    <string name="counter">Counter</string>
+    <string name="progress">Progress</string>
+    <string name="anim">Animation</string>
+    <string name="users">Users</string>
+    <string name="photos">Photos</string>
+    <string name="login">Login</string>
+    <string name="thumbnail">Thumbnail</string>
+
+    <string name="empty"/>
+    <string name="error_invalid_email">invalid email</string>
+    <string name="error_invalid_password">invalid password</string>
+    <string name="github">Fork me on Github</string>
+    <string name="plus">+</string>
+    <string name="minus">-</string>
+    <string name="click_me">Click me!</string>
+    <string name="smooth">Smooth</string>
+    <string name="hello_message">Hello, %1$s!</string>
+</resources>

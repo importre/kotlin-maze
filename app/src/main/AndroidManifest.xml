@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.importre.example">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <application
+        android:name=".app.MazeApp"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <activity android:name=".main.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".main.hello.HelloActivity"/>
+
+        <activity android:name=".main.counter.CounterActivity"/>
+
+        <activity android:name=".main.progress.ProgressActivity"/>
+
+        <activity android:name=".main.anim.AnimActivity"/>
+
+        <activity android:name=".main.photos.PhotosActivity"/>
+
+        <activity android:name=".main.users.UsersActivity"/>
+
+        <activity android:name=".main.login.LoginActivity"/>
+    </application>
+
+</manifest>

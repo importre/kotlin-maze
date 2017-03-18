@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?attr/selectableItemBackground"
+    android:minHeight="?attr/listPreferredItemHeightLarge"
+    android:orientation="horizontal"
+    tools:background="@android:color/darker_gray">
+
+    <ImageView
+        android:id="@+id/thumbnail"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="?android:listPreferredItemPaddingStart"
+        android:contentDescription="@string/thumbnail"
+        android:scaleType="centerInside"
+        tools:background="@android:color/white"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="?android:listPreferredItemPaddingEnd"
+        android:layout_marginStart="?android:listPreferredItemPaddingStart"
+        android:layout_toEndOf="@id/thumbnail"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:lines="1"
+            android:maxLines="2"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            tools:text="title"/>
+
+        <TextView
+            android:id="@+id/subtitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:ellipsize="end"
+            android:lines="1"
+            android:maxLines="2"
+            android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+            tools:text="subtitle"/>
+    </LinearLayout>
+</RelativeLayout>

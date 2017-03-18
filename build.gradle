@@ -1,0 +1,54 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.3.0'
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+ext {
+    // Sdk and tools
+    minSdkVersion = 19
+    targetSdkVersion = 25
+    compileSdkVersion = 25
+    buildToolsVersion = '25.0.2'
+
+    // App dependencies
+    support_version = '25.3.0'
+    kotlin_version = '1.1.1'
+    dokka_version = '0.9.13'
+    retrofit_version = '2.2.0'
+    okhttp_version = '3.6.0'
+    dagger_version = '2.9'
+    rxbinding_version = '2.0.0'
+    espresso_version = '2.2.2'
+    support_test_version = '0.5'
+    rxjava_version = '2.0.7'
+    rxandroid_version = '2.0.1'
+    picasso_version = '2.5.2'
+    mockito_version = '2.7.15'
+    constraint_layout_version = '1.0.2'
+    maze_version = '0.1.0'
+
+    // etc
+    kotlin_eap_url = 'http://dl.bintray.com/kotlin/kotlin-eap-1.1'
+    github_url = 'https://github.com/importre/kotlin-maze'
+}
