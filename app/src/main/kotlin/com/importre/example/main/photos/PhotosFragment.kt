@@ -67,10 +67,12 @@ class PhotosFragment : BaseFragment(), MazeListener<PhotosModel>, OnItemClickLis
 
         if (curr.currentPage <= 1) {
             adapter.photos.clear()
+            adapter.addAll(curr.photos)
+            adapter.notifyDataSetChanged()
+        } else {
+            val (start, length) = adapter.addAll(curr.photos)
+            adapter.notifyItemRangeInserted(start, length)
         }
-
-        val (start, length) = adapter.addAll(curr.photos)
-        adapter.notifyItemRangeInserted(start, length)
     }
 
     override fun navigate(navigation: Navigation) {
