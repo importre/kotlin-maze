@@ -70,8 +70,6 @@ repositories {
 dependencies {
     compile project(':kotlin-maze')
     testCompile project(':kotlin-maze-test')
-//    compile "com.importre:kotlin-maze:$rootProject.maze_version"
-//    compile "com.importre:kotlin-maze-test:$rootProject.maze_version"
 
     compile 'com.importre:kotlin-unwrap:0.3.0'
     compile 'com.github.bumptech.glide:glide:3.7.0'
