@@ -65,7 +65,7 @@ class HelloFragment : BaseFragment(), MazeListener<HelloModel> {
 
     // Cleanup if Activity is finished
     override fun finish() = maze.finish()
-    
+
     // Handle errors
     override fun error(t: Throwable) {
         t.printStackTrace()
@@ -102,7 +102,7 @@ fun helloMain(sources: Sources<HelloModel>): Sinks<HelloModel> {
 
 You can extend `Navigation`s and/or `Event`s if you want
 
-Please refer to default 
+Please refer to default
 <a href="/kotlin-maze/src/main/kotlin/com/importre/maze/Navigations.kt">`Navigation`s</a>,
 <a href="/kotlin-maze/src/main/kotlin/com/importre/maze/Events.kt">`Event`s</a>
 
@@ -136,6 +136,11 @@ testCompile "com.importre:kotlin-maze-test:$maze_version"
 ```
 
 
+## Slides
+
+- [Speaker Deck][speakerdeck] - [Droid Knights 2017][droidknights]
+
+
 ## License
 
 Apache 2.0 © Jaewe Heo
@@ -147,3 +152,6 @@ Apache 2.0 © Jaewe Heo
 [bintray-version]: https://bintray.com/importre/maven/kotlin-maze-test/_latestVersion
 [travis-badge]: https://travis-ci.org/importre/kotlin-maze.svg?branch=master
 [travis-url]: https://travis-ci.org/importre/kotlin-maze
+[speakerdeck]: https://speakerdeck.com/importre/compose-everything-with-rx-and-kotlin
+[droidknights]: https://droidknights.github.io/2017/
+
