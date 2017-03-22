@@ -109,6 +109,8 @@ Please refer to default
 
 ### More examples
 
+> [videos](https://goo.gl/photos/yGKG1GRJba7xKCeA7)
+
 - <a href="/app/src/main/kotlin/com/importre/example/main/hello">Hello, World!</a>
 - <a href="/app/src/main/kotlin/com/importre/example/main/counter">Counter</a>
 - <a href="/app/src/main/kotlin/com/importre/example/main/progress">Progress</a>
