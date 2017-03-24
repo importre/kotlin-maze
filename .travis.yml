@@ -1,5 +1,15 @@
-language: java
+language: android
+
+android:
+  components:
+    - tools
+    - platform-tools
+    - build-tools-25.0.2
+    - android-25
+    - extra-android-m2repository
+
 jdk:
-  - oraclejdk8
   - oraclejdk7
 
+script:
+  - ./gradlew test
