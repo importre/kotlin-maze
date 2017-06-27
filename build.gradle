@@ -33,7 +33,7 @@ ext {
 
     // App dependencies
     support_version = '25.3.0'
-    kotlin_version = '1.1.2'
+    kotlin_version = '1.1.3'
     dokka_version = '0.9.13'
     retrofit_version = '2.2.0'
     okhttp_version = '3.6.0'
@@ -46,7 +46,7 @@ ext {
     picasso_version = '2.5.2'
     mockito_version = '2.7.15'
     constraint_layout_version = '1.0.2'
-    maze_version = '0.1.1'
+    maze_version = '0.1.2'
 
     // etc
     kotlin_eap_url = 'http://dl.bintray.com/kotlin/kotlin-eap-1.1'
